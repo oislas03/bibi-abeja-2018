@@ -25,10 +25,13 @@ public class controlImagen : MonoBehaviour
 
         EstadoJuego.estadoJuego.setTema("geometria");
         EstadoJuego.estadoJuego.setNivel(1);
-        EstadoJuego.estadoJuego.setUsuario(2);
+        EstadoJuego.estadoJuego.setUsuario(3);
         EstadoJuego.estadoJuego.setPalabra("triangulo");
         EstadoJuego.estadoJuego.NumIntentos = 4;
-        EstadoJuego.estadoJuego.NumIntentosActual = 3;
+        EstadoJuego.estadoJuego.NumIntentosActual = 1;
+
+        EstadoJuego.estadoJuego.guardarImagenDesbloqueada();
+
 
         String palabra = EstadoJuego.estadoJuego.palabra;
         path = palabra + "Completo";
@@ -46,65 +49,68 @@ public class controlImagen : MonoBehaviour
         GameObject.Find("marco").transform.FindChild("parte8").transform.FindChild("Imagen8").GetComponent<Image>().enabled = false;
 
 
-        switch (numParticiones) {
-                case 1:
-                    index = 0;
-                    Invoke("ponerImagen", 1);
-         
+        switch (numParticiones)
+        {
+            case 1:
+                index = 0;
+                Invoke("ponerImagen", 1);
+
 
 
                 break;
-                case 2:
-                    if (indiceParticiones == 0) {
-                  
-                    index = 0;
-                        Invoke("ponerImagen", 1);
+            case 2:
+                if (indiceParticiones == 0)
+                {
 
-                    }
-                    else if (indiceParticiones==1) {
+                    index = 0;
+                    Invoke("ponerImagen", 1);
+
+                }
+                else if (indiceParticiones == 1)
+                {
                     GameObject.Find("marco").transform.FindChild("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte2").transform.FindChild("Imagen2").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte7").transform.FindChild("Imagen7").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte8").transform.FindChild("Imagen8").GetComponent<Image>().enabled = true;
                     imagenes[0].colocarImagen(path);
-                        imagenes[1].colocarImagen(path);
-                        imagenes[6].colocarImagen(path);
-                        imagenes[7].colocarImagen(path);
-                        index = 1;
-                        Invoke("ponerImagen", 1);
-                    }
-                    break;
-                case 4:
-                    if (indiceParticiones == 0)
-                    {
-                        index = 0;
-                        Invoke("ponerImagen", 1);
+                    imagenes[1].colocarImagen(path);
+                    imagenes[6].colocarImagen(path);
+                    imagenes[7].colocarImagen(path);
+                    index = 1;
+                    Invoke("ponerImagen", 1);
+                }
+                break;
+            case 4:
+                if (indiceParticiones == 0)
+                {
+                    index = 0;
+                    Invoke("ponerImagen", 1);
 
-                    }
-                    else if (indiceParticiones == 1)
-                    {
+                }
+                else if (indiceParticiones == 1)
+                {
                     GameObject.Find("marco").transform.FindChild("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte2").transform.FindChild("Imagen2").GetComponent<Image>().enabled = true;
                     imagenes[0].colocarImagen(path);
-                        imagenes[1].colocarImagen(path);
-                        index = 1;
-                        Invoke("ponerImagen", 1);
-                    }
-                    else if (indiceParticiones == 2)
-                    {
+                    imagenes[1].colocarImagen(path);
+                    index = 1;
+                    Invoke("ponerImagen", 1);
+                }
+                else if (indiceParticiones == 2)
+                {
                     GameObject.Find("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     GameObject.Find("parte2").transform.FindChild("Imagen2").GetComponent<Image>().enabled = true;
                     GameObject.Find("parte3").transform.FindChild("Imagen3").GetComponent<Image>().enabled = true;
                     GameObject.Find("parte4").transform.FindChild("Imagen4").GetComponent<Image>().enabled = true;
                     imagenes[0].colocarImagen(path);
-                        imagenes[1].colocarImagen(path);
-                        imagenes[2].colocarImagen(path);
-                        imagenes[3].colocarImagen(path);
-                        index = 2;
-                        Invoke("ponerImagen", 1);
-                    }
-                    else if (indiceParticiones == 3)
-                    {
+                    imagenes[1].colocarImagen(path);
+                    imagenes[2].colocarImagen(path);
+                    imagenes[3].colocarImagen(path);
+                    index = 2;
+                    Invoke("ponerImagen", 1);
+                }
+                else if (indiceParticiones == 3)
+                {
                     GameObject.Find("marco").transform.FindChild("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte2").transform.FindChild("Imagen2").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte3").transform.FindChild("Imagen3").GetComponent<Image>().enabled = true;
@@ -113,42 +119,42 @@ public class controlImagen : MonoBehaviour
                     GameObject.Find("marco").transform.FindChild("parte8").transform.FindChild("Imagen8").GetComponent<Image>().enabled = true;
 
                     imagenes[0].colocarImagen(path);
-                        imagenes[1].colocarImagen(path);
-                        imagenes[2].colocarImagen(path);
-                        imagenes[3].colocarImagen(path);
-                        imagenes[6].colocarImagen(path);
-                        imagenes[7].colocarImagen(path);
-                        index = 3;
-                        Invoke("ponerImagen", 1);
-                    }
-                    break;
-                case 6:
-                    if (indiceParticiones == 0)
-                    {
-                        index = 0;
-                        Invoke("ponerImagen", 1);
-                    }
-                    else if (indiceParticiones == 1)
-                    {
+                    imagenes[1].colocarImagen(path);
+                    imagenes[2].colocarImagen(path);
+                    imagenes[3].colocarImagen(path);
+                    imagenes[6].colocarImagen(path);
+                    imagenes[7].colocarImagen(path);
+                    index = 3;
+                    Invoke("ponerImagen", 1);
+                }
+                break;
+            case 6:
+                if (indiceParticiones == 0)
+                {
+                    index = 0;
+                    Invoke("ponerImagen", 1);
+                }
+                else if (indiceParticiones == 1)
+                {
                     GameObject.Find("marco").transform.FindChild("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     imagenes[0].colocarImagen(path);
-                        index = 1;
-                        Invoke("ponerImagen", 1);
-                    }
-                    else if (indiceParticiones == 2)
-                    {
+                    index = 1;
+                    Invoke("ponerImagen", 1);
+                }
+                else if (indiceParticiones == 2)
+                {
                     GameObject.Find("marco").transform.FindChild("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte2").transform.FindChild("Imagen2").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte3").transform.FindChild("Imagen3").GetComponent<Image>().enabled = true;
 
                     imagenes[0].colocarImagen(path);
-                        imagenes[1].colocarImagen(path);
-                        imagenes[2].colocarImagen(path);
-                        index = 2;
-                        Invoke("ponerImagen", 1);
-                    }
-                    else if (indiceParticiones == 3)
-                    {
+                    imagenes[1].colocarImagen(path);
+                    imagenes[2].colocarImagen(path);
+                    index = 2;
+                    Invoke("ponerImagen", 1);
+                }
+                else if (indiceParticiones == 3)
+                {
                     GameObject.Find("marco").transform.FindChild("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte2").transform.FindChild("Imagen2").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte3").transform.FindChild("Imagen3").GetComponent<Image>().enabled = true;
@@ -157,25 +163,25 @@ public class controlImagen : MonoBehaviour
                     imagenes[1].colocarImagen(path);
                     imagenes[2].colocarImagen(path);
                     imagenes[3].colocarImagen(path);
-                        index = 3;
-                        Invoke("ponerImagen", 1);
-                    }
-                    else if (indiceParticiones == 4)
-                    {
+                    index = 3;
+                    Invoke("ponerImagen", 1);
+                }
+                else if (indiceParticiones == 4)
+                {
                     GameObject.Find("marco").transform.FindChild("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte2").transform.FindChild("Imagen2").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte3").transform.FindChild("Imagen3").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte4").transform.FindChild("Imagen4").GetComponent<Image>().enabled = true;
-                    GameObject.Find("marco").transform.FindChild("parte8").transform.FindChild("Imagen8").GetComponent<Image>().enabled = true;                    imagenes[0].colocarImagen(path);
+                    GameObject.Find("marco").transform.FindChild("parte8").transform.FindChild("Imagen8").GetComponent<Image>().enabled = true; imagenes[0].colocarImagen(path);
                     imagenes[1].colocarImagen(path);
                     imagenes[2].colocarImagen(path);
                     imagenes[3].colocarImagen(path);
                     imagenes[7].colocarImagen(path);
-                        index = 4;
-                        Invoke("ponerImagen", 1);
-                    }
-                    else if (indiceParticiones == 5)
-                    {
+                    index = 4;
+                    Invoke("ponerImagen", 1);
+                }
+                else if (indiceParticiones == 5)
+                {
                     GameObject.Find("marco").transform.FindChild("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte2").transform.FindChild("Imagen2").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte3").transform.FindChild("Imagen3").GetComponent<Image>().enabled = true;
@@ -189,19 +195,19 @@ public class controlImagen : MonoBehaviour
                     imagenes[3].colocarImagen(path);
                     imagenes[7].colocarImagen(path);
                     imagenes[5].colocarImagen(path);
-                        imagenes[6].colocarImagen(path);
-                        index = 5;
-                        Invoke("ponerImagen", 1);
-                    }
-                    break;
-                default:
-                    break;
+                    imagenes[6].colocarImagen(path);
+                    index = 5;
+                    Invoke("ponerImagen", 1);
+                }
+                break;
+            default:
+                break;
 
-            }
+        }
 
-         
 
-        
+
+
 
 
 
@@ -275,8 +281,9 @@ public class controlImagen : MonoBehaviour
 
     }
 
-    public void ponerImagen() {
-       this.GetComponent<AudioSource>().Play();
+    public void ponerImagen()
+    {
+        this.GetComponent<AudioSource>().Play();
 
 
         switch (numParticiones)
@@ -291,10 +298,10 @@ public class controlImagen : MonoBehaviour
                 imagenes[5].colocarImagen(path);
                 imagenes[6].colocarImagen(path);
                 imagenes[7].colocarImagen(path);
-                EstadoJuego.estadoJuego.guardarImagenDesbloqueada(EstadoJuego.estadoJuego.palabra);
+                // EstadoJuego.estadoJuego.guardarImagenDesbloqueada(EstadoJuego.estadoJuego.palabra);
                 break;
             case 2:
-                if (index== 0)
+                if (index == 0)
                 {
                     Console.WriteLine("Aqui estoy!");
 
@@ -317,11 +324,11 @@ public class controlImagen : MonoBehaviour
                     imagenes[3].colocarImagen(path);
                     imagenes[5].colocarImagen(path);
                     imagenes[4].colocarImagen(path);
-                    EstadoJuego.estadoJuego.guardarImagenDesbloqueada(EstadoJuego.estadoJuego.palabra);
+                    // EstadoJuego.estadoJuego.guardarImagenDesbloqueada(EstadoJuego.estadoJuego.palabra);
                 }
                 break;
             case 4:
-                if (index== 0)
+                if (index == 0)
                 {
                     GameObject.Find("marco").transform.FindChild("parte1").transform.FindChild("Imagen1").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte2").transform.FindChild("Imagen2").GetComponent<Image>().enabled = true;
@@ -349,7 +356,7 @@ public class controlImagen : MonoBehaviour
                     GameObject.Find("marco").transform.FindChild("parte6").transform.FindChild("Imagen6").GetComponent<Image>().enabled = true;
                     imagenes[4].colocarImagen(path);
                     imagenes[5].colocarImagen(path);
-                    EstadoJuego.estadoJuego.guardarImagenDesbloqueada(EstadoJuego.estadoJuego.palabra);
+                    //EstadoJuego.estadoJuego.guardarImagenDesbloqueada(EstadoJuego.estadoJuego.palabra);
 
                 }
                 break;
@@ -384,15 +391,15 @@ public class controlImagen : MonoBehaviour
 
                     GameObject.Find("marco").transform.FindChild("parte6").transform.FindChild("Imagen6").GetComponent<Image>().enabled = true;
                     GameObject.Find("marco").transform.FindChild("parte7").transform.FindChild("Imagen7").GetComponent<Image>().enabled = true;
-                imagenes[5].colocarImagen(path);
+                    imagenes[5].colocarImagen(path);
                     imagenes[6].colocarImagen(path);
-                  
+
                 }
                 else if (index == 5)
                 {
                     GameObject.Find("marco").transform.FindChild("parte5").transform.FindChild("Imagen5").GetComponent<Image>().enabled = true;
                     imagenes[4].colocarImagen(path);
-                    EstadoJuego.estadoJuego.guardarImagenDesbloqueada(EstadoJuego.estadoJuego.palabra);
+                    //EstadoJuego.estadoJuego.guardarImagenDesbloqueada(EstadoJuego.estadoJuego.palabra);
 
                 }
                 break;
@@ -406,3 +413,5 @@ public class controlImagen : MonoBehaviour
 
 
 }
+
+

@@ -236,7 +236,7 @@ public class HandCursor : MonoBehaviour
 
     void OnGUI()
     {
-        
+
 
         // Cuadrado y posición en la pantalla que ayuda a dibujar el lápiz.
         Rect posa = new Rect(mousePos.x + 2, Screen.height - mousePos.y - 23, cursorImage.width, cursorImage.height);
@@ -269,7 +269,8 @@ public class HandCursor : MonoBehaviour
                 {
                     GameObject.Find("DrawLine").GetComponent<DrawLine>().Dibujar(coordinates2d);
                 }
-            } else if(pasoNombre == "paso 2")
+            }
+            else if (pasoNombre == "paso 2")
             {
                 if (hit.collider.tag == "salir")
                 {
@@ -469,7 +470,7 @@ public class HandCursor : MonoBehaviour
     {
         StartCoroutine("colocarPieza");
     }
-    
+
     /// <summary>
     /// Método que permite colocar una pieza con el cursor dentro de los espacios vacíos en el pizarrón.
     /// </summary>

@@ -259,6 +259,46 @@ public class conexionDB
 
     }
 
+    public void guardarImgDesbloqueada(string nombre, int idUsuario, int divisor, int numCompletado)
+    {
+        int id = this.obtenerUltimoidImgDesbloqueada(idUsuario, nombre);
+
+        IDbConnection dbconn;
+
+        dbconn = (IDbConnection)new SqliteConnection(conn);
+
+
+        dbconn.Open(); //Open connection to the database.
+        string sqlQuery = "";
+        if (id == -1)
+        {
+            sqlQuery = "INSERT INTO ImagenesDesbloqueadas (idUsuario,idImagen, divisor, numCompletado)  VALUES ('" + idUsuario + "',(1+(select "
+                          + "CAST(  CASE  WHEN MAX(idImagen) IS NOT NULL THEN Max(idImagen)     ELSE  (select Min(id) from Imagenes where nombre= '" + nombre + "')-1 END AS bit) as MAXIMO "
+                          + " from Imagenes JOIN ImagenesDesbloqueadas  ON (Imagenes.id = ImagenesDesbloqueadas.idImagen) AND (Imagenes.nombre='" + nombre + "') AND (ImagenesDesbloqueadas.idUsuario='" + idUsuario + "'))) , " + divisor + "," + numCompletado + ")"; // FIXED
+
+        }
+        else
+        {
+            Debug.Log(divisor + "  intentos" + numCompletado);
+            sqlQuery = "UPDATE ImagenesDesbloqueadas  SET divisor = " + divisor + ", numCompletado = " + numCompletado + ", visible ='si' WHERE idImagen = ( SELECT MAX(ImagenesDesbloqueadas.idImagen)"
+ + "from Imagenes JOIN ImagenesDesbloqueadas ON(Imagenes.id = ImagenesDesbloqueadas.idImagen) AND (Imagenes.nombre = '" + nombre + "') AND (ImagenesDesbloqueadas.idUsuario = '" + idUsuario + "') )";
+        }
+
+        IDbCommand dbcmd = dbconn.CreateCommand();
+        dbcmd.CommandText = sqlQuery;
+        dbcmd.ExecuteNonQuery();
+        dbcmd.Dispose();
+        dbcmd = null;
+        dbconn.Close();
+        dbconn = null;
+
+
+    }
+
+
+
+
+
 
     public void guardarIntento(int idUsuario, string palabra, float duracion, string path, int exitoso, int nivel, String[] datos)
     {
@@ -306,4 +346,46 @@ public class conexionDB
         dbconn = null;
         return palabra;
     }
+
+
+
+    public int obtenerUltimoidImgDesbloqueada(int idUsuario, string palabra)
+    {
+        IDbConnection dbconn;
+        dbconn = (IDbConnection)new SqliteConnection(conn);
+
+        dbconn.Open(); //Open connection to the database.
+        int id = 0;
+        IDbCommand dbcmd = dbconn.CreateCommand();
+        string sqlQuery = "SELECT CAST (CASE WHEN  MAX(idImagen) IS NOT NULL AND divisor<> numCompletado THEN MAX(idImagen)  ELSE (-1) END AS INTEGER) AS MAXIMO"
+        + " from Imagenes JOIN ImagenesDesbloqueadas  ON(Imagenes.id = ImagenesDesbloqueadas.idImagen)AND(Imagenes.nombre = '" + palabra + "') AND(ImagenesDesbloqueadas.idUsuario = '" + idUsuario + "')";
+
+        dbcmd.CommandText = sqlQuery;
+
+        IDataReader reader = dbcmd.ExecuteReader();
+        try
+        {
+            while (reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+
+        }
+        catch (Exception e)
+        {
+
+            Debug.Log(e.Message);
+        }
+
+        reader.Close();
+        reader = null;
+        dbcmd.Dispose();
+        dbcmd = null;
+        dbconn.Close();
+        dbconn = null;
+        return id;
+    }
+
+
+
 }

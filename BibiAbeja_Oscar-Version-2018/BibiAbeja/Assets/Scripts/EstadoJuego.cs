@@ -180,7 +180,12 @@ public class EstadoJuego : MonoBehaviour {
 
     public void guardarImagenDesbloqueada()
     {
-        conexion.guardarImgDesbloqueada(this.palabra, this.ActivePlayer.id);
+        conexion.guardarImgDesbloqueada(this.palabra, this.ActivePlayer.id, this.numIntentos, this.NumIntentosActual);
+    }
+
+
+    public bool ImagenIncompleta() {
+        return this.conexion.obtenerUltimoidImgDesbloqueada(this.ActivePlayer.id, this.palabra) == -1 ? false : true;
     }
 
 

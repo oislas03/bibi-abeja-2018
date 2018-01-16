@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class dropDownHandler : MonoBehaviour {
+    public GameObject panelPregunta;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -46,9 +47,30 @@ public class dropDownHandler : MonoBehaviour {
                 break;
    
         }
+        bool continuar = EstadoJuego.estadoJuego.ImagenIncompleta();
 
+        if (continuar)
+        {
+         
+        }
+        else {
 
-        SceneManager.LoadScene("paso "+ EstadoJuego.estadoJuego.nivel);
+            SceneManager.LoadScene("paso " + EstadoJuego.estadoJuego.nivel);
+
+        }
+    }
+
+    public  void preguntaContinuar(bool continuar){
+
+        if (continuar)
+        {
+      
+        }
+        else {
+
+        }
+     
+
     }
 
     private void OneChanged(int newPosition)
